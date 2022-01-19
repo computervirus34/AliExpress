@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliExpress", "AliExpress\AliExpress.csproj", "{09DEDEC9-4F67-4ED2-A9F7-79AC80F40527}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09DEDEC9-4F67-4ED2-A9F7-79AC80F40527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09DEDEC9-4F67-4ED2-A9F7-79AC80F40527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09DEDEC9-4F67-4ED2-A9F7-79AC80F40527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09DEDEC9-4F67-4ED2-A9F7-79AC80F40527}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD8FA787-882D-40AD-AA62-F5348ECE4832}
+	EndGlobalSection
+EndGlobal
