@@ -24,7 +24,6 @@ namespace AliExpress.Controllers
         // GET: ProductsController
         public async Task<ActionResult> Index()
         {
-            //List<AliexpressOrdersProduct> res = _unitOfWork.AliexpressOrdersProducts.All()
             return View(await _unitOfWork.AliexpressProducts.All());
         }
 
