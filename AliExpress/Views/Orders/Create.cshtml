@@ -13,11 +13,7 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="OrderDate" class="control-label"></label>
                 <input asp-for="OrderDate" class="form-control" />
@@ -89,7 +85,7 @@
                 <span asp-validation-for="OrderCancelled" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary"  onclick="CreateOrders()"/>
             </div>
         </form>
     </div>
@@ -102,3 +98,42 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<script>
+
+    function CreateOrders() {
+        $.ajax(
+        {
+          type: "POST",
+          url: '@Url.Action("AddNewOrder", "Orders")',
+          data: {
+              OrderDate: $('#OrderDate').val(),
+              SuppliersOrderId: $('#SuppliersOrderId').val(),
+              TotalUnitsInOrder: $('#TotalUnitsInOrder').val(),
+              TotalCostOfProducts: $('#TotalCostOfProducts').val(),
+              CostOfShipping: $('#CostOfShipping').val(),
+              TotalOrderTax: $('#TotalOrderTax').val(),
+              Currency: $('#Currency').val(),
+              AdjustedPrice: $('#AdjustedPrice').val(),
+              TotalAmount: $('#TotalAmount').val(),
+              Discount: $('#Discount').val(),
+              NzSupplyOrderId: $('#NzSupplyOrderId').val(),
+              ReceiptDocument: $('#ReceiptDocument').val(),
+              AliExpressStoreName: $('#AliExpressStoreName').val(),
+              OrderCancelled: $('#OrderCancelled').val()
+          },
+          error: function (result) {
+            alert("There is a Problem, Try Again!");
+          },
+          success: function (result) {
+            console.log(result);
+              if (result.status == true) {
+                  alert("Order added successfully!");
+              window.location.href = '@Url.Action("Index", "Orders")';
+            }
+            else {
+              alert(result.message);
+            }
+          }
+        });
+      }
+</script>

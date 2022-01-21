@@ -14,11 +14,6 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Url" class="control-label"></label>
                 <input asp-for="Url" class="form-control" />
                 <span asp-validation-for="Url" class="text-danger"></span>
@@ -50,16 +45,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea asp-for="Description" class="form-control" rows="5" cols="200"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SpecInformation" class="control-label"></label>
-                <input asp-for="SpecInformation" class="form-control" />
+                <textarea asp-for="SpecInformation" class="form-control" rows="5" cols="200"></textarea>
                 <span asp-validation-for="SpecInformation" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary"  onclick="CreateProduct()"/>
             </div>
         </form>
     </div>
@@ -72,3 +67,45 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<script>
+
+    function CreateProduct() {
+        debugger;
+        var Url = $('#Url').val();
+        var ProductName = $('#ProductName').val();
+        var Specification1 = $('#Specification1').val();
+        var MainImage = $('#MainImage').val();
+        var Images = $('#Images').val();
+        var Sku = $('#Sku').val();
+        var Description = $('#Description').val();
+        var SpecInformation = $('#SpecInformation').val();
+        $.ajax(
+        {
+          type: "POST",
+          url: '@Url.Action("AddNewProduct", "Products")',
+          data: {
+              Url: Url,
+              ProductName: ProductName,
+              Specification1: Specification1,
+              MainImage: MainImage,
+              Images: Images,
+              Sku: Sku,
+              Description: Description,
+              SpecInformation: SpecInformation
+          },
+          error: function (result) {
+            alert(result.message);
+          },
+          success: function (result) {
+            console.log(result);
+              if (result.status == true) {
+                  alert(result.message);
+                  window.location.href = '@Url.Action("Index", "Products")';
+            }
+            else {
+              alert(result.message);
+            }
+          }
+        });
+      }
+</script>

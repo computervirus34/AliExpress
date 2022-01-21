@@ -48,11 +48,10 @@ namespace AliExpress.Controllers
             try
             {
                 bool isSuccess = await _unitOfWork.AliexpressProducts.Add(product);
-                if (isSuccess)
-                    await _unitOfWork.CompleteAsync();
-
+                
                 if (isSuccess)
                 {
+                    await _unitOfWork.CompleteAsync();
                     return Json(new { status = true, message = "Product added successfully!" });
                 }
                 else

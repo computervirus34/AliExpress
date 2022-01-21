@@ -89,7 +89,7 @@
                 <span asp-validation-for="OrderCancelled" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" onclick="UpdateOrders()" />
             </div>
         </form>
     </div>
@@ -102,3 +102,43 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<script>
+
+    function UpdateOrders() {
+        $.ajax(
+        {
+          type: "POST",
+          url: '@Url.Action("UpdateOrders", "Orders")',
+            data: {
+                Id: $('#Id').val(),
+                OrderDate: $('#OrderDate').val(),
+                SuppliersOrderId: $('#SuppliersOrderId').val(),
+                TotalUnitsInOrder: $('#TotalUnitsInOrder').val(),
+                TotalCostOfProducts: $('#TotalCostOfProducts').val(),
+                CostOfShipping: $('#CostOfShipping').val(),
+                TotalOrderTax: $('#TotalOrderTax').val(),
+                Currency: $('#Currency').val(),
+                AdjustedPrice: $('#AdjustedPrice').val(),
+                TotalAmount: $('#TotalAmount').val(),
+                Discount: $('#Discount').val(),
+                NzSupplyOrderId: $('#NzSupplyOrderId').val(),
+                ReceiptDocument: $('#ReceiptDocument').val(),
+                AliExpressStoreName: $('#AliExpressStoreName').val(),
+                OrderCancelled: $('#OrderCancelled').val()
+            },
+          error: function (result) {
+            alert("There is a Problem, Try Again!");
+          },
+          success: function (result) {
+            console.log(result);
+              if (result.status == true) {
+                  alert(result.message);
+              window.location.href = '@Url.Action("Index", "Orders")';
+            }
+            else {
+              alert(result.message);
+            }
+          }
+        });
+      }
+</script>
