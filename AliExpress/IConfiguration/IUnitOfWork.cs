@@ -10,6 +10,8 @@ namespace AliExpress
     {
         public IAliexpressOrdersProductsRepository AliexpressOrdersProducts { get; }
         public IAppUserRepository AppUsers { get; }
+        public IAliexpressProductRepository AliexpressProducts { get; }
+        public IAliexpressOrderRepository AliexpressOrders { get; }
         Task CompleteAsync();
     }
 }

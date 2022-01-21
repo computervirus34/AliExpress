@@ -15,6 +15,8 @@ namespace AliExpress.Data
 
         public IAliexpressOrdersProductsRepository AliexpressOrdersProducts { get; private set; }
         public IAppUserRepository AppUsers { get; private set; }
+        public IAliexpressOrderRepository AliexpressOrders { get; private set; }
+        public IAliexpressProductRepository AliexpressProducts { get; private set; }
         public UnitOfWork(
             ApplicationDbContext context,
             ILoggerFactory loggerFactory
@@ -24,6 +26,8 @@ namespace AliExpress.Data
             _logger = loggerFactory.CreateLogger("logs");
             AliexpressOrdersProducts = new AliexpressOrdersProductsRepository(_context, _logger);
             AppUsers = new AppUserRepository(_context, _logger);
+            AliexpressOrders = new AliexpressOrderRepository(_context, _logger);
+            AliexpressProducts = new AliexpressProductRepository(_context, _logger);
         }
 
         public async Task CompleteAsync()
