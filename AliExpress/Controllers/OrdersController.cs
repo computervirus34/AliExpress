@@ -24,6 +24,10 @@ namespace AliExpress.Controllers
         // GET: OrdersController
         public async Task<ActionResult> Index()
         {
+            if (HttpContext.Session.GetString("login") == null)
+            {
+                return RedirectToAction("Account", "Login");
+            }
             return View(await _unitOfWork.AliexpressOrders.All());
         }
 

@@ -69,8 +69,9 @@
                 <td class="more">
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-                <td class="more">
-                    @Html.DisplayFor(modelItem => item.SpecInformation)
+                <td>
+                    <pre class="more">@Html.DisplayFor(modelItem => item.SpecInformation)</pre>
+                    
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

@@ -1,4 +1,5 @@
 ﻿using AliExpress.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -20,13 +21,13 @@ namespace AliExpress.Controllers
 
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("login") == null)
+            {
+                return RedirectToAction("Account", "Login");
+            }
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

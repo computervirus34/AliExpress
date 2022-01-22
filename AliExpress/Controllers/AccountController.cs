@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -31,6 +33,7 @@ namespace AliExpress.Controllers
             {
                 if (_user.Password == user.Password)
                 {
+                    HttpContext.Session.SetString("login", _user.Email);
                     return Json(new { status = true, message = "Login Successfull!" });
                 }
                 else
@@ -42,6 +45,14 @@ namespace AliExpress.Controllers
             {
                 return Json(new { status = false, message = "Invalid Email!" });
             }
+        }
+
+        [HttpPost]
+        public IActionResult Logout()
+        {
+            //await HttpContext.SignOutAsync();
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Account");
         }
     }
 }

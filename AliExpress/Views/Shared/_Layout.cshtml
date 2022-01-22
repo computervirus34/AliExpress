@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -11,8 +13,8 @@
     <link href="~/css/Comment.css" rel="stylesheet" />
     <script src="~/js/jquery.shorten.1.0.js"></script>
     <link href="~/vendor/bootstrap/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/vendor/bootstrap/js/jquery.dataTables.min.js"></script>
+    <script src="~/vendor/bootstrap/js/dataTables.bootstrap4.min.js"></script>
 </head>
 <body>
     <header>
@@ -34,6 +36,35 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="OrdersProduct" asp-action="Index">Orders Product</a>
                         </li>
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav ml-auto">
+                        @*If the user is signed-in display Logout link*@
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("login")!=null)
+                        {
+                            <li class="nav-item">
+                                <form method="post" asp-controller="account" asp-action="logout">
+                                    <button type="submit" style="width:auto"
+                                            class="nav-link btn btn-link py-0">
+                                        Logout @HttpContextAccessor.HttpContext.Session.GetString("login")
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="account" asp-action="register">
+                                    Register
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="account" asp-action="login">
+                                    Login
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

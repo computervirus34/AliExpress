@@ -61,8 +61,10 @@
         <dt class="col-sm-2 ">
             @Html.DisplayNameFor(model => model.SpecInformation)
         </dt>
-        <dd class="col-sm-10 comment more">
-            @Html.DisplayFor(model => model.SpecInformation)
+        <dd class="col-sm-10">
+            <pre class="comment more">
+                @Html.DisplayFor(model => model.SpecInformation)
+            </pre>
         </dd>
     </dl>
 </div>
