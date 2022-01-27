@@ -38,7 +38,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.SpecInformation)
             </th>
-            <th>EditDetailsDelete</th>
+            <th>&nbsp;&nbsp;Action&nbsp;&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -74,9 +74,18 @@
                     
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    <a href='@Url.Action("Edit","Products", new { id = item.Id })'>
+                        <i class="fa fa-edit" title="Edit"></i>
+                    </a> |
+                    <a href='@Url.Action("Details","Products", new { id = item.Id })'>
+                        <i class="fa fa-list" title="Details"></i>
+                    </a> |
+                    <a href='@Url.Action("Delete","Products", new { id = item.Id })'>
+                        <i class="fa fa-remove btn-danger" title="Delete" ></i>
+                    </a>
+                    @*@Html.ActionLink(" ", "Edit", new { id = item.Id }) |*@
+                    <!--@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })-->
                 </td>
             </tr>
         }

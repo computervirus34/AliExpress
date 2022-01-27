@@ -57,7 +57,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.OrderCancelled)
             </th>
-            <th class="nowrap">EditDetailsDelete</th>
+            <th class="nowrap">&nbsp;&nbsp;Action&nbsp;&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -109,10 +109,16 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.OrderCancelled)
                 </td>
-                <td  class="nowrap">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                <td>
+                    <a href='@Url.Action("Edit","Orders", new { id = item.Id })'>
+                        <i class="fa fa-edit" title="Edit"></i>
+                    </a> |
+                    <a href='@Url.Action("Details","Orders", new { id = item.Id })'>
+                        <i class="fa fa-list" title="Details"></i>
+                    </a> |
+                    <a href='@Url.Action("Delete","Orders", new { id = item.Id })'>
+                        <i class="fa fa-remove btn-danger" title="Delete"></i>
+                    </a>
                 </td>
             </tr>
         }

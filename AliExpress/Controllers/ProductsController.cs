@@ -26,7 +26,7 @@ namespace AliExpress.Controllers
         {
             if (HttpContext.Session.GetString("login") == null)
             {
-                return RedirectToAction("Account", "Login");
+                return RedirectToAction("Login", "Account");
             }
             var products = await _unitOfWork.AliexpressProducts.All();
             return View(products);
