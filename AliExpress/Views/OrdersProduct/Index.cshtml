@@ -12,9 +12,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.SuppliersOrderId)
             </th>
             <th>
@@ -40,13 +37,12 @@
         {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.SuppliersOrderId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Url)
+                <a href="https://@item.Url" target="_blank">
+                    @Html.DisplayFor(modelItem => item.Url)
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Specification1)

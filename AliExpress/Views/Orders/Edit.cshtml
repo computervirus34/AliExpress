@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>AliexpressOrder</h4>
+<h4>Edit Aliexpress Order</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -132,7 +130,7 @@
           success: function (result) {
             console.log(result);
               if (result.status == true) {
-                  alert(result.message);
+                  //alert(result.message);
               window.location.href = '@Url.Action("Index", "Orders")';
             }
             else {

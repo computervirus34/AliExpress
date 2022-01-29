@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
-
-<h4>AliexpressOrder</h4>
+<h4>Add Aliexpress Order</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -127,7 +125,7 @@
           success: function (result) {
             console.log(result);
               if (result.status == true) {
-                  alert("Order added successfully!");
+                  //alert("Order added successfully!");
               window.location.href = '@Url.Action("Index", "Orders")';
             }
             else {

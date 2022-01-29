@@ -35,12 +35,20 @@ namespace AliExpress.Controllers
         // GET: OrdersProductController/Details/5
         public async Task<ActionResult> Details(int id)
         {
+            if (HttpContext.Session.GetString("login") == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View(await _unitOfWork.AliexpressProducts.GetByID(id));
         }
 
         // GET: OrdersProductController/Create
         public ActionResult Create()
         {
+            if (HttpContext.Session.GetString("login") == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View();
         }
 
@@ -72,6 +80,10 @@ namespace AliExpress.Controllers
         // GET: OrdersProductController/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
+            if (HttpContext.Session.GetString("login") == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View(await _unitOfWork.AliexpressProducts.GetByID(id));
         }
 
@@ -103,6 +115,10 @@ namespace AliExpress.Controllers
         // GET: OrdersProductController/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
+            if (HttpContext.Session.GetString("login") == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View(await _unitOfWork.AliexpressProducts.GetByID(id));
         }
 
