@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting.Internal;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,13 @@ namespace AliExpress.Controllers
             }
             return View(await _unitOfWork.AliexpressProducts.GetByID(id));
         }
-
+        //public ActionResult RenderPhoto(string photoId)
+        //{
+        //    string path = HostingEnvironment.MapPath("~/image/noimage.jpg");
+        //    byte[] photo = File.ReadAllBytes(path);
+        //     //photo = "~\\Images\\"+photoId;
+        //    return File(photo, "image/jpeg");
+        //}
         // GET: OrdersProductController/Create
         public ActionResult Create()
         {
